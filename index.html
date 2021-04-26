@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>proyecto 2</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+</head>
+
+       <h1><br><br>Informacion principal de algunas ciudades Sudamericanas</h1><br><br>
+
+      <body>
+
+
+        <label id="menu">Seleccione una ciudad:
+            <select class="ciudades">
+              <option value="">Seleccione la Ciudad</option>
+              <option value="Bogotá">Bogota</option>
+              <option value="Caracas">Caracas</option>
+              <option value="Buenos Aires">Buenos Aires</option>
+            </select>
+          </label>
+
+          <figure>
+            <img src="./tierra.gif" width="300" height="250"   />
+          </figure>
+
+    </div>
+
+    <div class="result">
+        </div>
+
+    </body>
+
+        <script>
+
+
+                const selectElement = document.querySelector('.ciudades');
+                selectElement.addEventListener('change', (event) => {
+                const result = document.querySelector('.result');
+               if (event.target.value == 'Bogotá') {
+                console.log('entro')
+
+            fetch('http://api.openweathermap.org/data/2.5/weather?id=5095808&appid=74d091f7602734908fb183648d39a4df')
+            .then(response => response.json())
+             .then(data => {
+               result.innerHTML = `<p><br><br>Información del clima<br><br></p>
+               <p>Estado: "${data.weather[0].description}"</p>
+               <p>Temperatura: "${data.main.temp}"</p>
+               <p>Temperatura máxima: "${data.main.temp_max}" </p>
+               <p>Temperatura mínima: "${data.main.temp_min}" </p>
+               <p>Pais: "${data.sys.country}" </p><br><br>`
+                console.log("entro")
+
+
+                fetch("https://restcountries.eu/rest/v2/alpha/col")
+               .then(response => response.json())
+                .then(data => {
+                  result.innerHTML += `<p>Simbolo Patrio</p><br>
+                  <img src = "${data.flag}" width="500px"><br><br>`
+
+                 fetch('https://allsportsapi.com/api/football/?met=Leagues&APIkey=2333bbf6f895bceda54366cc323f52631b7a70760c1beecbe2f63fba865d4a4f')
+                .then(response => response.json())
+                  .then(data => {
+                 result.innerHTML += `<p>Logo Liga Colombiana de Futbol</p><br>
+                 <img src = "${data.result[101].league_logo}" width="300px">`})
+
+             })
+           });
+         }
+
+
+           else if (event.target.value == 'Caracas'){
+
+            fetch('http://api.openweathermap.org/data/2.5/weather?id=3646738&appid=74d091f7602734908fb183648d39a4df')
+            .then(response => response.json())
+             .then(data => {
+             result.innerHTML = `<p><br><br>Información del clima<br><br>
+              <p>Estado: "${data.weather[0].description}"</p>
+              <p>Temperatura: "${data.main.temp}" </p>
+              <p>Temperatura máxima: "${data.main.temp_max}" </p>
+               <p>Temperatura mínima: "${data.main.temp_min}" </p>
+                <p>Pais: "${data.sys.country}" </p><br><br>`
+
+               fetch("http://restcountries.eu/rest/v2/alpha/ven")
+                .then(response => response.json())
+               .then(data => {
+                 result.innerHTML += `
+                 <p>Simbolo Patrio</p><br>
+                 <img src = "${data.flag}" width="500px">`
+
+                fetch('https://allsportsapi.com/api/football/?met=Leagues&APIkey=2333bbf6f895bceda54366cc323f52631b7a70760c1beecbe2f63fba865d4a4f')
+                .then(response => response.json())
+                  .then(data => {
+                 result.innerHTML += `<p>Logo Liga Venezolana de Futbol</p><br>
+                 <img src = "${data.result[546].league_logo}" width="300px">`})
+
+
+    })
+  });
+}
+
+             else if (event.target.value == 'Buenos Aires') {
+
+            fetch('http://api.openweathermap.org/data/2.5/weather?id=3435907&appid=74d091f7602734908fb183648d39a4df')
+           .then(response => response.json())
+            .then(data => {
+            result.innerHTML = `<p><br><br>Información del clima<br><br>
+             <p>Estado: "${data.weather[0].description}"</p>
+             <p>Temperatura: "${data.main.temp}" </p>
+             <p>Temperatura máxima: "${data.main.temp_max}" </p>
+             <p>Temperatura mínima: "${data.main.temp_min}" </p>
+              <p>Pais: "${data.sys.country}" </p><br><br>`
+
+              fetch("https://restcountries.eu/rest/v2/alpha/arg")
+               .then(response => response.json())
+               .then(data => {
+                result.innerHTML += `<p>Simbolo Patrio</p><br>
+               <img src = "${data.flag}" width="500px"><br><br><br>`
+
+                fetch('https://allsportsapi.com/api/football/?met=Leagues&APIkey=2333bbf6f895bceda54366cc323f52631b7a70760c1beecbe2f63fba865d4a4f')
+                .then(response => response.json())
+                .then(data => {
+                result.innerHTML += `<p>Logo Liga Argentina de Futbol</p>
+                <img src = "${data.result[11].league_logo}" width="300">`})
+
+             })
+           });
+         }
+       })
+       </script>
+
+       <script>src='./app1.js'</script>
+
+</html>

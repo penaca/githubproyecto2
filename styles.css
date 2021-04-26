@@ -1,0 +1,28 @@
+body {
+  font-family: cursive;
+  font-size: 130%;
+  color: #00ff00;
+  background-image: url(./0Ea1RQ.gif);
+}
+
+h1 {
+  color: lawngreen;
+  text-align: center;
+  font-family: cursive;
+  box-sizing: content-box;
+  text-shadow: 7px 5px 5px #ff8c00;
+}
+
+.result {
+  text-align: center;
+}
+
+p {
+  font-family: cursive;
+  color: #ffd700;
+  font-size: 120%;
+}
+
+.imagen {
+  text-align: center;
+}
